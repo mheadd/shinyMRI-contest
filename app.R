@@ -21,8 +21,8 @@ ui <- navbarPage(
     fluidRow(
       column(3, selectInput(
         "demo_dt", "Choose a Demo Data", choices = c(
-          "3D Brain MRI" = "data/3d_t1w.nii.gz",
-          "4D Brain fMRI" = "data/4d_fmri.nii.gz"
+          "3D Brain MRI" = "data/avg152T1_LR_nifti.nii.gz",
+          "4D Brain fMRI" = "data/filtered_func_data.nii.gz"
           )
       )),
       column(1, h5("Or"), class = "text-center", style = "padding-top: 15px;"),
@@ -70,5 +70,6 @@ server <- function(input, output, session) {
   
 }
 
-shinyApp(ui, server)
+port <- Sys.getenv('PORT') 
+shiny::runApp(shinyApp(ui, server), host = '0.0.0.0', port = as.numeric(port))
 

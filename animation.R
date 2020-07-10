@@ -28,7 +28,7 @@ raster3d_animation_Module <- function(input, output, session, im) {
   dir.create(temp_dir, showWarnings = FALSE)
   img_slice <- function(x) {
     temp_img <- tempfile("", temp_dir, fileext = ".png")
-    png(temp_img)
+    png(temp_img, type="cairo")
     par(oma = rep(0, 4), mar = rep(0, 4), bg = "black")
     graphics::image(1:dim(x)[1], 1:dim(x)[2], x,
                     col = gray(0:64/64), asp = 1,

@@ -1,0 +1,5 @@
+---
+    applications:
+    - name: shiny-demo-mri
+      memory: 256M
+      random-route: true    
